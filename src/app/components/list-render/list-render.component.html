@@ -1,0 +1,101 @@
+
+<!--
+
+     <div class="col-md-4"></div>
+     <div class="col-md-2"></div>
+
+-->
+<div class="container card">
+
+    <div class="row">
+        <div class="col-md-12">
+         
+           
+                <p-dataView #dv [value]="produtos" [paginator]="true" [rows]="8"  filterBy="nome"
+                     layout="grid">
+                    <ng-template pTemplate="header">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" (change)="onSelect($event.target)"  >
+                              <option value="{{null}}" selected>  </option>
+                              <option *ngFor="let categoria of categorias" value="{{categoria.nome}}" >{{categoria.nome}}</option>
+                            </select>
+                          </div>
+                    </ng-template>
+                   
+                    <ng-template let-produto pTemplate="gridItem" class="row">
+                        <div class="p-col-12 p-md-4">
+                            <div class="product-grid-item card">
+                                <div class="product-grid-item-top">
+                                    <div>
+                                        <i class="pi pi-tag product-category-icon"> </i><span style="margin-left: 4px;">{{produto.categoria}}</span>
+                                    </div>
+                                </div>
+                                <div class="product-grid-item-content">
+                                    <div class="row">
+                                        <div class="col-3"></div>
+                                        <div class="col-6">
+                                            <img src="{{animals.toString()}}" alt="imagem-cliente" class="img-fluid">
+                                        </div>
+                                        <div class="col-3"></div>
+                                    </div> 
+                                   
+                                    <div class="product-name"> <p style="text-align: center;"><b >{{produto.nome}}</b></p></div>
+                                    <div class="product-description"><p style="font-style:italic ;">{{produto.descricao}}</p></div>
+                                </div>
+                                <div class="product-grid-item-bottom">
+                                    <span class="product-price"><b>R${{produto.preco}}</b></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4"></div>
+                                    <div class="col-3">
+                                        <a class="btn btn-primary">Detalhes</a>
+                                    </div>
+                                    <div class="col-5"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-dataView>
+                
+                
+                
+        </div>
+    </div>
+    
+</div>
+
+
+<div class="container">
+    <div class="card" style="height: 800px;">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let produto of produtos | paginate: { itemsPerPage: contador, currentPage: pag }">
+                <div class="card" style="width: 220px; height: 350px;">
+                    <img class="card-img-top" src="{{animals.toString()}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{produto.nome}}</h5>
+                      <p class="card-text"style="font-style:italic ;">{{produto.descricao}}</p>
+                      <p class="card-text"><b>R${{produto.preco}}</b></p>
+                      <div class="text-center">
+                        <a href="#" class="btn btn-success">ADD</a>
+                      </div>
+                     
+                    </div>
+                  </div>
+            </div>
+         
+        
+        </div>
+
+        
+    
+</div>
+<div class="text-center">
+    <pagination-controls (pageChange)="pag 
+    = $event" 
+    previousLabel="Anterior"
+    nextLabel="Próximo"></pagination-controls>
+  </div>
