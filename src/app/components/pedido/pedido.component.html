@@ -6,63 +6,10 @@
 
 -->
 
-<h1>Produtos:</h1>
+<h1>Pedidos:</h1>
 
 
 
-<h1>Modelo Inicial</h1>
-<div class="container">
-    <form (ngSubmit)="Submit()" [formGroup]="pedidoForm"  #formDir="ngForm" class="row g-3">
-        <input type="text" placeholder="Digite o Nome do cliente" class="form-control mb-3" title="nomeCliente" formControlName="nomeCliente" />
-        <input type="text" placeholder="Digite o Endereco" class="form-control mb-3" title="endereco" formControlName="endereco"/>
-        <input type="text" placeholder="Digite o Telefone" class="form-control mb-3" title="telefone" formControlName="telefone"/>
-
-   
-
-
-        <input type="submit" value="Criar" class="btn btn-outline-success mb-3" style="width:90px;"/>
-        
-    </form>
-
-    
-    <div class="container row">
-      <div class="col-md-12" *ngIf="array.length > 0" >
-        <div class="Card-Detalhe card" >
-            <h1 class="h1 mb-3">Produtos Adicionados</h1>
-            <div class="row">
-                <div class="col-md-3" *ngFor="let produto of produtosDois">
-                    <div class="card" style="width: 220px; height: 350px;">
-                        <img class="card-img-top" src="{{animals.toString()}}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">{{produto.nome}}</h5>
-                          <p class="card-text"style="font-style:italic ;">{{produto.descricao}}</p>
-                          <p class="card-text"><b>R${{produto.preco}}</b></p>
-                                                
-                        </div>
-                      </div>
-                </div>
-           
-            </div>
-
-      </div>
-     
-     <div class="col-md-2">
-
-     </div>
-  
-          
-    </div>
-
-    
-     
-      
-    
-   
-
-   
-       
-        
-</div>
 
 
 
@@ -70,31 +17,21 @@
 
 <div class="container">
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01" (change)="onSelect($event.target)"  >
-          <option value="{{null}}" selected>  </option>
-          <option *ngFor="let categoria of categorias" value="{{categoria.nome}}" >{{categoria.nome}}</option>
-        </select>
-      </div>
     <div class="card" style="height: 800px;">
         <div class="row">
-            <div class="col-md-3" *ngFor="let produto of produtos | paginate: { itemsPerPage: contador, currentPage: pag }">
+            <div class="col-md-3" *ngFor="let pedido of pedidos ">
                 <div class="card" style="width: 220px; height: 350px;">
-                    <i class="pi pi-tag product-category-icon"> </i><span style="margin-left: 4px;">{{produto.categoria}}</span>
-                    <img class="card-img-top" src="{{animals.toString()}}" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">{{produto.nome}}</h5>
-                      <p class="card-text"style="font-style:italic ;">{{produto.descricao}}</p>
-                      <p class="card-text"><b>R${{produto.preco}}</b></p>
-                      <div class="text-center">
-                        <button class="btn btn-success" [class.selected]="produto === selectedProduto" type="button" (click)="onSelectDois(produto)">
-                           ADD
-                          </button>
-                      </div>
-                     
+                      <h5 class="card-title">{{pedido.nomeCliente}}</h5>
+                      <p class="card-text"style="font-style:italic ;">{{pedido.endereco}}</p>
+                      <p class="card-text"><b>{{pedido.telefone}}</b></p>
+                    </div>
+                  </div>
+
+
+                  <div *ngFor="let pedido of pedidos">
+                    <div>
+                      <p> {{pedido.pedidoItens}}</p> 
                     </div>
                   </div>
             </div>
@@ -105,12 +42,7 @@
         
     
 </div>
-<div class="text-center">
-    <pagination-controls (pageChange)="pag 
-    = $event" 
-    previousLabel="Anterior"
-    nextLabel="Próximo"></pagination-controls>
-  </div>
+
 
 
 

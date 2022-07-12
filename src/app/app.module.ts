@@ -8,19 +8,22 @@ import { HttpClientModule } from '@angular/common/http'
 import {OrderListModule} from 'primeng/orderlist';
 import {DataViewModule} from 'primeng/dataview';
 import {DropdownModule} from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms'
 import { NgxPaginationModule } from 'ngx-pagination';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListRenderComponent
+    ListRenderComponent,
+    PedidoComponent
     
   ],
   imports: [
-    BrowserModule, HttpClientModule,OrderListModule,DataViewModule,DropdownModule,FormsModule,NgxPaginationModule
+    BrowserModule, HttpClientModule,OrderListModule,DataViewModule,DropdownModule,FormsModule,NgxPaginationModule,ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

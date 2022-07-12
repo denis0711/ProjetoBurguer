@@ -1,10 +1,11 @@
 export interface Produto{
 
-    CodigoProduto: number,
+    codigoProduto: number,
     nome: string,
     preco: number,
     codigoCategoria: number,
-    descricao: string
+    descricao: string,
+    categoria:string
     /*public int? CodigoProduto { get; set; }
         public string Nome { get; set; }
         public decimal? Preco { get; set; }
